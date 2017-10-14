@@ -1,0 +1,31 @@
+#include <iostream>
+ 
+using namespace std;
+long long m=1000000007;
+long long POW(long long a,long long b)
+{
+    if(b==1)
+        return a;
+    long long r=POW(a,b/2LL);
+    r=r*r;
+    r%=m;
+    if(b%2LL==1)
+        r=(r*a)%m;
+    return r;
+}
+int main()
+{
+    long long n,r,aux,aa=2,bb=3;
+    cin>>n;
+    long long R=POW(3LL,m-2LL);
+    while(n--)
+    {
+        cin>>aux;
+        r=POW(2LL,aux+1LL);
+        //cout<<r<<endl;
+        if(aux%2==0)
+            cout<<((r+1LL)*R)%m<<endl;
+        else
+            cout<<((r-1LL)*R)%m<<endl;
+    }return 0;
+}
